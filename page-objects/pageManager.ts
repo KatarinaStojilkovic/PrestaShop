@@ -6,10 +6,6 @@ import {artPage} from '../page-objects/artPage'
 import {accessoriesPage} from '../page-objects/accessoriesPage'
 import {clothesPage} from '../page-objects/clothesPage'
 
-
-
-
-
 export class PageManager {
 
 private readonly page: Page
