@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { faker } from '@faker-js/faker';
+import { DateModule, SimpleDateModule, faker } from '@faker-js/faker';
 
 
 export class signUpPage {
@@ -18,6 +18,7 @@ async createUser (){
     await this.page.frameLocator('#framelive').getByLabel('Last name').fill(faker.person.lastName())
     await this.page.frameLocator('#framelive').getByLabel('Email').fill(faker.internet.email())
     await this.page.frameLocator('#framelive').getByLabel('Password input').fill(faker.internet.password())
+    await this.page.frameLocator('#framelive').getByPlaceholder('MM/DD/YYYY').fill( faker.date.between('1950/01/01', '2024/05/05').toLocaleDateString('en-US'))
     await this.page.frameLocator('#framelive').getByText('I agree to the terms and conditions and the privacy policy').click()
     await this.page.frameLocator('#framelive').getByText('Customer data privacy').click()
     await this.page.frameLocator('#framelive').getByRole('button', {name: 'Save'}).click()
