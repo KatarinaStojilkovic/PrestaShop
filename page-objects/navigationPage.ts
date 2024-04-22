@@ -4,6 +4,9 @@ import {HelperBase} from './helperBase';
 export class NavigationPage extends HelperBase {
 
 readonly page: Page
+// readonly signInPage: Locator
+// readonly
+//readonly
 
 constructor (page: Page){
     super (page)
