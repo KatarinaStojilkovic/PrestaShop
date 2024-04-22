@@ -9,4 +9,10 @@ constructor (page: Page){
     super (page)
 }
 
+// async signInPage(){
+// const frame = this.page.frameLocator('#framelive').getByRole('link', {name: 'Sign in'}).first().click()
+// await this.page.frameLocator('#framelive').getByRole('link', {name: 'Sign in'}).first().click()
+// }
+
+
 }
