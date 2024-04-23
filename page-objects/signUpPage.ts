@@ -1,5 +1,6 @@
 import { Page } from "@playwright/test";
 import { DateModule, SimpleDateModule, faker } from '@faker-js/faker';
+import { sign } from "crypto";
 
 
 export class signUpPage {
@@ -9,7 +10,7 @@ readonly page: Page
     constructor (page: Page){
         this.page = page
     }
-
+    
 async createUser (){
    const signIn = await this.page.frameLocator('#framelive').getByRole('link', {name: 'Sign in'}).first().click()
    const signUpButton = await this.page.frameLocator('#framelive').getByRole('link', {name: 'No account? Create one here'}).click()
@@ -22,7 +23,9 @@ async createUser (){
    const checkBox = await this.page.frameLocator('#framelive').getByText('I agree to the terms and conditions and the privacy policy').click()
    const checkBox1 = await this.page.frameLocator('#framelive').getByText('Customer data privacy').click()
    const saveButton = await this.page.frameLocator('#framelive').getByRole('button', {name: 'Save'}).click()
-    }
 
-  
+}
+
+
+ 
 }

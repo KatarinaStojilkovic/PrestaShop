@@ -3,6 +3,7 @@ import { PageManager } from '../page-objects/pageManager'
 import { faker } from '@faker-js/faker';
 import { assert } from 'console';
 import { signUpPage } from '../page-objects/signUpPage';
+import { sign } from 'crypto';
 
 
 test.beforeEach(async({page}) =>{
@@ -84,10 +85,10 @@ test ('User can register with all valid credentials', async({page}) => {
     await saveButton.click()
     expect(saveButton).toBeDefined()
 
-    // Inviting a function without assertion
+    // // Inviting a function without assertion
     
-    // const pm = new PageManager(page)
-    // await pm.onSignUpPage().createUser()
+    // // const pm = new PageManager(page)
+    // // await pm.onSignUpPage().createUser()
    
 
 }) 
