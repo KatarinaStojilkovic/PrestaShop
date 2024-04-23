@@ -24,6 +24,5 @@ async createUser (){
     await this.page.frameLocator('#framelive').getByRole('button', {name: 'Save'}).click()
     }
 
- 
-
+  
 }
