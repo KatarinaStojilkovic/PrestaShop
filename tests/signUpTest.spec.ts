@@ -21,6 +21,8 @@ test.beforeEach(async({page}) =>{
 
 test ('User can register with all valid credentials', async({page}) => {
 
+    //Verify that the user can sign up with valid credentials and that the user is signed up and on main page.
+
     // Sign In button assertion
     const signIn = await page.frameLocator('#framelive').getByRole('link', {name: 'Sign in'}).first()
     await signIn.click()
