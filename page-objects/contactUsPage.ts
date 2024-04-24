@@ -8,4 +8,7 @@ export class contactUsPage {
     async getContacUsForm (){
         return this.page.frameLocator('#framelive').locator('#contact-link').getByRole('link', { name: 'Contact us' }).first().click()
     }
+    async subjectFromDropDown (){
+        return this.page.frameLocator('#framelive]').getByLabel('Subject')
+    }
 }
