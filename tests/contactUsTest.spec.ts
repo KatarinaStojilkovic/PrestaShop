@@ -6,7 +6,10 @@ test.beforeEach(async ({ page }) => {
     await page.goto('https://demo.prestashop.com/#/en/front')
 })
 
-test('Navigate to website', async ({ page }) => {
+test ('Contact Us Form', async ({ page }) => {
+
+    const pm = new PageManager(page)
+   await pm.onContactUsPage().getContacUsForm()
 
     //Asserting the Clothes page and clicking on the clothes page element
 
