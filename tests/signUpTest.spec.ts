@@ -1,21 +1,17 @@
     import {test, expect} from '@playwright/test'
     import { PageManager } from '../page-objects/pageManager'
     import { faker } from '@faker-js/faker';
-    import { assert } from 'console';
-    import { signUpPage } from '../page-objects/signUpPage';
 
-
+    // The page has to open everytime before starting the test since nothing is saved when the page gets reloaded or it takes some time to load
     test.beforeEach(async({page}) =>{
         await page.goto('https://demo.prestashop.com/#/en/front')
     })
 
-
-    test ('User can register with all valid credentials', async({page}) => {
+    test('User can register with all valid credentials', async({page}) => {
 
         // Creating a const in order to call up the locators easier and assert the user inputs
         const pm = new PageManager(page)
-        await pm.onSignUpPage().createUser()
-    
+            
         // Sign in page assertion
         const signIn = await pm.onSignUpPage().getSignInButton()
         await signIn.click()
@@ -82,7 +78,5 @@
         const saveButton = await pm.onSignUpPage().getSaveButton()
         await saveButton.click()
         expect(saveButton).toBeDefined()
-
-    
 
     }) 
