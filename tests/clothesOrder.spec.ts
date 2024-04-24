@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
 
 test('Clothes Page', async ({ page }) => {
     const pm = new PageManager(page)
-    pm.onClothesPage().getClothesPage()
+    pm.onClothesPage().clickOnClothesMenu()
     //Asserting the Clothes page and clicking on the clothes page element
     const clothesPage = await pm.onClothesPage().getClothesPage()
     await clothesPage.click()
@@ -16,22 +16,22 @@ test('Clothes Page', async ({ page }) => {
     // Scrolling to the element 
     await pm.onClothesPage().clickOnSweaterProduct()
     // Input of the number in field and assertion of the input data
-    const quantity = await pm.onClothesPage().getInputData()
+    const quantity = await pm.onClothesPage().inputNumberOfSweaters()
     expect('1200').toEqual('1200')
     // Adding items to cart
-    const addToCart = await pm.onClothesPage().getAddToCart()
+    const addToCart = await pm.onClothesPage().addToCartButton()
     // Proceeding to Checkout
-    await pm.onClothesPage().getProceedToCheckout()
+    await pm.onClothesPage().ProceedToCheckout()
     // Clicking the arrowUp
-    await pm.onClothesPage().getArrowClick()
+    await pm.onClothesPage().clickOnArrowUp()
     // Assertion of the Error Alert
-    const errorMessage = await pm.onClothesPage().getErrorMessage()
+    const errorMessage = await pm.onClothesPage().alertRedBox()
     await expect(errorMessage).toBeVisible()
     // Assertion of the Text Error Message saying that the product allows no more than 1200 products 
-    const textErrorMessage = await pm.onClothesPage().getTextErrorMessage()
+    const textErrorMessage = await pm.onClothesPage().textErrorMessage()
     await expect(textErrorMessage).toBeVisible()
     // Assertion of the Proceed To Checkout Button when it is not visible
-    const proceedToCheckoutButton = await pm.onClothesPage().getProceedToButton()
+    const proceedToCheckoutButton = await pm.onClothesPage().proceedToCheckoutBlueBox()
     await expect(proceedToCheckoutButton).toBeHidden()
 }
 )
