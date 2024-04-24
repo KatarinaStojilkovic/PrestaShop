@@ -1,6 +1,5 @@
     import { Locator, Page } from "@playwright/test";
     import { DateModule, SimpleDateModule, faker } from '@faker-js/faker';
-    import { sign } from "crypto";
 
     export class signUpPage {
 
