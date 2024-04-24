@@ -8,7 +8,7 @@ test.beforeEach(async ({ page }) => {
 
 test ('Contact Us Form', async ({ page }) => {
 const pm = new PageManager(page)
-await pm.onContactUsPage().getContacUsForm()
+await pm.onContactUsPage().clickOnContactUsForm()
 
 }
 )
