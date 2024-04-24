@@ -15,7 +15,7 @@ export class clothesPage {
     async getClothesPage() {
         return this.page.frameLocator('#framelive').getByRole('link', { name: 'Clothes' }).first()
     }
-    async getElementInput() {
+    async clickOnSweaterProduct() {
         return this.page.frameLocator('#framelive').getByRole('link', { name: 'Brown bear printed sweater' }).first().click()
     }
     async getInputData() {

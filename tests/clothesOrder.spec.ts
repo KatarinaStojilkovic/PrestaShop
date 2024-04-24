@@ -14,10 +14,10 @@ test('Clothes Page', async ({ page }) => {
     await clothesPage.textContent()
     await expect(clothesPage).toContainText('Clothes')
     // Scrolling to the element 
-    await pm.onClothesPage().getElementInput()
+    await pm.onClothesPage().clickOnSweaterProduct()
     // Input of the number in field and assertion of the input data
     const quantity = await pm.onClothesPage().getInputData()
-    await expect('1200').toEqual('1200')
+    expect('1200').toEqual('1200')
     // Adding items to cart
     const addToCart = await pm.onClothesPage().getAddToCart()
     // Proceeding to Checkout
