@@ -19,7 +19,7 @@ test('Clothes Page', async ({ page }) => {
     await pm.onClothesPage().inputNumberOfSweaters()
     expect('1200').toEqual('1200')
     // Adding items to cart
-    const addToCart = await pm.onClothesPage().clickOnAddToCartButton()
+    await pm.onClothesPage().clickOnAddToCartButton()
     // Proceeding to Checkout
     await pm.onClothesPage().clickOnProceedToCheckout()
     // Clicking the arrowUp
