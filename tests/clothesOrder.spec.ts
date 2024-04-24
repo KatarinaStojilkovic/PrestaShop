@@ -16,7 +16,7 @@ test('Clothes Page', async ({ page }) => {
     // Scrolling to the element 
     await pm.onClothesPage().clickOnSweaterProduct()
     // Input of the number in field and assertion of the input data
-    const quantity = await pm.onClothesPage().inputNumberOfSweaters()
+    await pm.onClothesPage().inputNumberOfSweaters()
     expect('1200').toEqual('1200')
     // Adding items to cart
     const addToCart = await pm.onClothesPage().clickOnAddToCartButton()
