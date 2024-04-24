@@ -12,7 +12,7 @@ export class clothesPage {
     async clickOnClothesMenu() {
         await this.page.frameLocator('#framelive').getByRole('link', { name: 'Clothes' }).first().click()
     }
-    async onClothesPage() {
+    async locateClothesLink() {
         return this.page.frameLocator('#framelive').getByRole('link', { name: 'Clothes' }).first()
     }
     async clickOnSweaterProduct() {
@@ -21,10 +21,10 @@ export class clothesPage {
     async inputNumberOfSweaters() {
         return this.page.frameLocator('#framelive').locator('#quantity_wanted').fill('1200')
     }
-    async addToCartButton() {
+    async clickOnAddToCartButton() {
         return this.page.frameLocator('#framelive').getByRole('button', { name: 'Add to cart' }).first().click()
     }
-    async ProceedToCheckout() {
+    async clickOnProceedToCheckout() {
         return this.page.frameLocator('#framelive').getByRole('link', { name: 'Proceed to checkout' }).first().click()
     }
     async clickOnArrowUp() {

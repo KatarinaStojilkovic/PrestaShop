@@ -9,7 +9,7 @@ test('Clothes Page', async ({ page }) => {
     const pm = new PageManager(page)
     pm.onClothesPage().clickOnClothesMenu()
     //Asserting the Clothes page and clicking on the clothes page element
-    const clothesPage = await pm.onClothesPage().getClothesPage()
+    const clothesPage = await pm.onClothesPage().locateClothesLink()
     await clothesPage.click()
     await clothesPage.textContent()
     await expect(clothesPage).toContainText('Clothes')
@@ -19,9 +19,9 @@ test('Clothes Page', async ({ page }) => {
     const quantity = await pm.onClothesPage().inputNumberOfSweaters()
     expect('1200').toEqual('1200')
     // Adding items to cart
-    const addToCart = await pm.onClothesPage().addToCartButton()
+    const addToCart = await pm.onClothesPage().clickOnAddToCartButton()
     // Proceeding to Checkout
-    await pm.onClothesPage().ProceedToCheckout()
+    await pm.onClothesPage().clickOnProceedToCheckout()
     // Clicking the arrowUp
     await pm.onClothesPage().clickOnArrowUp()
     // Assertion of the Error Alert
