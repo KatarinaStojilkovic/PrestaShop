@@ -5,6 +5,7 @@ export class contactUsPage {
     constructor(page: Page) {
         this.page = page
     }
+    // Creating the elements and finding locators of the mentioned ones.
     async clickOnContactUsForm() {
         return this.page.frameLocator('#framelive').locator('#contact-link').getByRole('link', { name: 'Contact us' }).first().click()
     }
