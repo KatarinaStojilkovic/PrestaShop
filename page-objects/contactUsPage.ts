@@ -5,10 +5,25 @@ export class contactUsPage {
     constructor(page: Page) {
         this.page = page
     }
-    async clickOnContactUsForm (){
+    async clickOnContactUsForm() {
         return this.page.frameLocator('#framelive').locator('#contact-link').getByRole('link', { name: 'Contact us' }).first().click()
     }
-    async cclickOnSubjectFromDropDown (){
-        return this.page.frameLocator('#framelive]').getByLabel('Subject')
+    async clickOnSubjectFromDropDown() {
+        return this.page.frameLocator('#framelive').getByLabel('Subject').click()
+    }
+    async clickOnWebmasterInDropDown() {
+        return this.page.frameLocator('#framelive').getByLabel('Subject').selectOption('Webmaster')
+    }
+    async emailInput() {
+        return this.page.frameLocator('#framelive').getByPlaceholder('your@email.com')
+    }
+    async subjectMessage() {
+        return this.page.frameLocator('#framelive').getByPlaceholder('How can we help?').fill('Do you have any new upcoming products?')
+    }
+    async sendButton() {
+        return this.page.frameLocator('#framelive').getByRole('button', { name: 'Send' }).click
+    }
+    async userNotSignedIn() {
+        return this.page.frameLocator('#framelive').getByRole('link', { name: 'Sign in' })
     }
 }
