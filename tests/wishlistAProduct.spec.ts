@@ -6,7 +6,7 @@ import { faker } from '@faker-js/faker';
 test.beforeEach(async ({ page }) => {
     await page.goto('https://demo.prestashop.com/#/en/front')
 })
-test('User can register with all valid credentials', async ({ page }) => {
+test('User can wishlist a product when signed in', async ({ page }) => {
     // Creating a const in order to call up the locators easier and assert the user inputs
     const pm = new PageManager(page);
     // Going to the Wishlist page
