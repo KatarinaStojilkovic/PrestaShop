@@ -4,7 +4,6 @@ import { PageManager } from '../page-objects/pageManager'
 test.beforeEach(async ({ page }) => {
     await page.goto('https://demo.prestashop.com/#/en/front')
 })
-
 test('Clothes Page', async ({ page }) => {
     const pm = new PageManager(page)
     pm.onClothesPage().clickOnClothesMenu()
