@@ -1,7 +1,6 @@
 import { Page } from '@playwright/test';
 import { clothesPage } from './clothesPage';
 
-
 export class PageManager {
     private readonly page: Page
     private readonly clothesPage: clothesPage
