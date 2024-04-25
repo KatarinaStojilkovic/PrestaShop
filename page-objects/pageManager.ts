@@ -1,17 +1,22 @@
 import { Page } from '@playwright/test';
-import { signUpPage } from '../page-objects/signUpPage'
+import { cartProductsCalculation } from './cartProductsCalculation';
+import { clothesPage } from './clothesPage';
 
 export class PageManager {
 
     private readonly page: Page
-    private readonly signUpPage: signUpPage
+    private readonly cartProductsCalculation: cartProductsCalculation
+    private readonly clothesPage: clothesPage
 
     constructor(page: Page) {
         this.page = page
-        this.signUpPage = new signUpPage(this.page)
+        this.cartProductsCalculation = new cartProductsCalculation(this.page)
+        this.clothesPage = new clothesPage(page)
     }
-
-    onSignUpPage() {
-        return this.signUpPage
+    onCartProductsPage() {
+        return this.cartProductsCalculation
+    }
+    onClothesPage() {
+        return this.clothesPage
     }
 }
