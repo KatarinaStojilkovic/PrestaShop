@@ -33,6 +33,6 @@ test('Contact Us Form', async ({ page }) => {
     expect(userIsNotSignedIn).toContain('Sign in')
     // Assertion that the message is sent.
     const messageIsSent = await pm.onContactUsPage().dialogBoxSentMessage()
-    await expect(messageIsSent).toBeVisible('Your message has been successfully sent to our team.')
+    await expect(messageIsSent).toContainText('Your message has been successfully sent to our team.')
 }
 )
