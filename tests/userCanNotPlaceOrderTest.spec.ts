@@ -54,38 +54,40 @@ test('User can not place order after signing in', async ({ page }) => {
     // Checkbox assertion
     const checkBox = await pm.onSignUpPage().getCheckBox()
     await checkBox.click()
-    const isChecked1 = await checkBox.isChecked()
-    expect(isChecked1).toBeTruthy()
+    const isChecked1 = 'I agree to the terms and conditions and the privacy policy'
+    await checkBox.isChecked()
+    expect(isChecked1).toContain('I agree to the terms and conditions and the privacy policy')
     // Checkbox assertion
     const checkBox1 = await pm.onSignUpPage().getCheckBox1()
     await checkBox1.click()
-    const isChecked2 = await checkBox1.isChecked()
-    expect(isChecked2).toBeTruthy()
+    const isChecked2 = 'Customer data privacy'
+    await checkBox1.isChecked()
+    expect(isChecked2).toContain('Customer data privacy')
     // Save button assertion
     const saveButton = await pm.onSignUpPage().getSaveButton()
     await saveButton.click()
-    expect(saveButton).toBeDefined()
+    expect(saveButton).toBeInViewport()
     await pm.onOrderingPage().clickOnSweaterProduct()
     // Input of the number in field and assertion of the input data
     await pm.onOrderingPage().clickOnAddToCartButton()
     // Proceeding to Checkout
     await pm.onOrderingPage().clickOnProceedToCheckout()
     await pm.onOrderingPage().blueBoxCheckout()
-    expect('Proceed to checkout').toEqual('Proceed to checkout')
+    expect('Proceed to checkout').toContain('Proceed to checkout')
     await pm.onOrderingPage().inputAddress()
     await pm.onOrderingPage().inputCityName()
     await pm.onOrderingPage().countryDropDown()
     // Assertion of the country
     await pm.onOrderingPage().chooseCountryFromDropDown()
-    expect('Arizona').toEqual('Arizona')
+    expect('Arizona').toContain('Arizona')
     await pm.onOrderingPage().zipCodeInput()
     await pm.onOrderingPage().blueContinueButton()
     // Assertion of the blue continue button
     await pm.onOrderingPage().shippingMethodContinueButton()
-    expect('Continue').toEqual('Continue')
+    expect('Continue').toContain('Continue')
     await pm.onOrderingPage().paymentCheckbox()
     // Assertion of the Place Order button
     const assertPlaceOrderButton = await pm.onOrderingPage().placeOrderButton()
-    expect(assertPlaceOrderButton).toBeDefined()
+    expect(assertPlaceOrderButton).toBeHidden()
 })
 

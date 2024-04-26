@@ -42,7 +42,8 @@ export class orderingPage {
         return this.page.frameLocator('#framelive').locator('#conditions-to-approve').getByLabel('I agree to the terms of service and will adhere to them unconditionally.').click()
     }
     async placeOrderButton() {
-        return this.page.frameLocator('#framelive').locator('#checkout-payment-step div').filter({ hasText: 'Place order' })
+        return this.page.frameLocator('#framelive').locator('js-payment-confirmation').filter({ hasText: 'Place order' })
     }
+    
 }
 
