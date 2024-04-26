@@ -12,19 +12,23 @@ export class contactUsPage {
     async clickOnSubjectFromDropDown() {
         return this.page.frameLocator('#framelive').getByLabel('Subject').click()
     }
-    async clickOnWebmasterInDropDown() {
-        return this.page.frameLocator('#framelive').getByLabel('Subject').selectOption('Webmaster')
+    async webmasterFromDropDown() {
+
+        return await this.page.frameLocator('#framelive').getByLabel('Subject').selectOption('Webmaster')
     }
-    async emailInput() {
+    async emailInputLocator() {
         return this.page.frameLocator('#framelive').getByPlaceholder('your@email.com')
     }
-    async subjectMessage() {
+    async messageBoxInput() {
         return this.page.frameLocator('#framelive').getByPlaceholder('How can we help?').fill('Do you have any new upcoming products?')
     }
-    async sendButton() {
-        return this.page.frameLocator('#framelive').getByRole('button', { name: 'Send' }).click
+    async clickOnSendButton() {
+        return this.page.frameLocator('#framelive').getByRole('button', { name: 'Send' }).click()
     }
-    async userNotSignedIn() {
+    async signInLocator() {
         return this.page.frameLocator('#framelive').getByRole('link', { name: 'Sign in' })
+    }
+    async messageSentGreenBox (){
+        return this.page.frameLocator('#framelive').locator('#content div').getByText('Your message has been successfully sent to our team.')
     }
 }
