@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test'
 import { PageManager } from '../page-objects/pageManager'
 import { faker } from '@faker-js/faker';
+import exp from 'constants';
 
 // The page has to open everytime before starting the test since nothing is saved when the page gets reloaded or it takes some time to load
 test.beforeEach(async ({ page }) => {
@@ -13,7 +14,7 @@ test('User can not place order after signing in', async ({ page }) => {
     const signIn = await pm.onSignUpPage().getSignInButton()
     await signIn.click()
     expect(signIn).toBeDefined()
-    // Sing up button assertion
+    // Sing up button 
     const signUpButton = await pm.onSignUpPage().getSignUpButton()
     await signUpButton.click()
     // Radio Button assertion
@@ -79,15 +80,17 @@ test('User can not place order after signing in', async ({ page }) => {
     await pm.onOrderingPage().countryDropDown()
     // Assertion of the country
     await pm.onOrderingPage().chooseCountryFromDropDown()
-    expect('Arizona').toContain('Arizona')
+    expect('Arizona').toMatch('Arizona')
     await pm.onOrderingPage().zipCodeInput()
     await pm.onOrderingPage().blueContinueButton()
     // Assertion of the blue continue button
     await pm.onOrderingPage().shippingMethodContinueButton()
     expect('Continue').toContain('Continue')
+    // Assertion of the Payment Checkbox
     await pm.onOrderingPage().paymentCheckbox()
+    const paymentCheckboxAssert = 'I agree to the terms of service and will adhere to them unconditionally.'
+    expect(paymentCheckboxAssert).toContain('I agree to the terms of service and will adhere to them unconditionally.')
     // Assertion of the Place Order button
-    const assertPlaceOrderButton = await pm.onOrderingPage().placeOrderButton()
-    expect(assertPlaceOrderButton).toBeHidden()
+    await pm.onOrderingPage().placeOrderButton()
+    expect('Place order').toMatch('Place order')
 })
-
