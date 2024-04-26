@@ -28,7 +28,7 @@ export class contactUsPage {
     async signInLocator() {
         return this.page.frameLocator('#framelive').getByRole('link', { name: 'Sign in' })
     }
-    async messageSentGreenBox (){
+    async messageSentGreenBox() {
         return this.page.frameLocator('#framelive').locator('#content div').getByText('Your message has been successfully sent to our team.')
     }
 }

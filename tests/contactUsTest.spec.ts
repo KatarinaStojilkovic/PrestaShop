@@ -8,7 +8,7 @@ test.beforeEach(async ({ page }) => {
 test('Contact Us Form', async ({ page }) => {
     // Creating a const for Page manager in order to call up the pages easier.
     const pm = new PageManager(page)
-    const userIsNotSignedIn = 'Sign in' 
+    const userIsNotSignedIn = 'Sign in'
     await pm.onContactUsPage().signInLocator()
     // Assertion that the user is not signed in.
     expect(userIsNotSignedIn).toContain('Sign in')
