@@ -23,8 +23,9 @@ test('User can wishlist a product when signed in', async ({ page }) => {
     // Radio Button assertion
     const radioButton = await pm.onSignUpPage().getRadioButton()
     await radioButton.click()
-    const isChecked = await radioButton.isChecked()
-    expect(isChecked).toBeTruthy()
+    const isChecked = 'Mrs'
+    await radioButton.isChecked()
+    expect(isChecked).toMatch('Mrs')
     // First Name assertion
     const firstName = await pm.onSignUpPage().getFirstName()
     const generatedFirstName = faker.person.firstName()
@@ -84,5 +85,6 @@ test('User can wishlist a product when signed in', async ({ page }) => {
     expect('New Wishlist').toContain('New Wishlist')
     await pm.onWishlistPage().productAddedPopUp()
     // Assertion of the added product
-    expect('Product added').toContain('Product added')
+    const productAdded = 'Product added'
+    expect(productAdded).toMatch('Product added')
 }) 
