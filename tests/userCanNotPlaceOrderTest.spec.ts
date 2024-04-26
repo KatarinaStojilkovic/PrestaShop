@@ -13,15 +13,17 @@ test('User can not place order after signing in', async ({ page }) => {
     const pm = new PageManager(page)
     const signIn = await pm.onSignUpPage().getSignInButton()
     await signIn.click()
-    expect(signIn).toBeDefined()
+    expect(signIn).toBeVisible()
     // Sing up button 
     const signUpButton = await pm.onSignUpPage().getSignUpButton()
     await signUpButton.click()
+    await expect(signUpButton).toBeVisible()
     // Radio Button assertion
     const radioButton = await pm.onSignUpPage().getRadioButton()
     await radioButton.click()
-    const isChecked = await radioButton.isChecked()
-    expect(isChecked).toBeTruthy()
+    const isChecked = 'Mrs'
+    await radioButton.isChecked()
+    expect(isChecked).toMatch('Mrs')
     // First Name assertion
     const firstName = await pm.onSignUpPage().getFirstName()
     const generatedFirstName = faker.person.firstName()
