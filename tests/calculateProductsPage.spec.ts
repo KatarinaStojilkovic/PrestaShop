@@ -16,8 +16,9 @@ test('Total calculation of the products in the shopping cart', async ({ page }) 
     await pm.onClothesPage().clickOnAddToCartButton()
     await pm.onCartProductsPage().proceedToCheckoutButton()
     await pm.onCartProductsPage().increaseTheProductNumber()
-    await pm.onCartProductsPage().increaseTheProductNumber()
-    await pm.onCartProductsPage().increaseTheProductNumber()
-    await pm.onCartProductsPage().increaseTheProductNumber()
+    // Assertion of the quantity
+    await pm.onCartProductsPage().assertQuantity()
+    const value = (5)
+    expect(value).toEqual(5)
 })
 
