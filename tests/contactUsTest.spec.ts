@@ -14,7 +14,7 @@ test('Contact Us Form', async ({ page }) => {
     expect(userIsNotSignedIn).toContain('Sign in')
     await pm.onContactUsPage().clickOnContactUsForm()
     await pm.onContactUsPage().clickOnSubjectFromDropDown()
-     // Assertion that the option "Webmaster" is selected.
+    // Assertion that the option "Webmaster" is selected.
     const webmasterselection = await pm.onContactUsPage().selectWebmasterFromDropDown()
     expect(webmasterselection).toContain('1')
     await pm.onContactUsPage().clickOnContactUsForm()
