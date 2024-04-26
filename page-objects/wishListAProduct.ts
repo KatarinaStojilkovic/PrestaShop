@@ -12,7 +12,7 @@ export class wishListAProduct {
     async clickOnAHeartButton() {
         return this.page.frameLocator('#framelive').locator('.wishlist-button-add').first().click()
     }
-    async popUpForSignInClick() {
+    async clickPopUpForSignIn() {
         return this.page.frameLocator('#framelive').getByRole('dialog').getByRole('link', { name: 'Sign in' }).first().click()
     }
     async createNewWishlistPopUp() {

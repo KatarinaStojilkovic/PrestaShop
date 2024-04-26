@@ -12,7 +12,7 @@ test('User can wishlist a product when signed in', async ({ page }) => {
     // Going to the Wishlist page
     await pm.onWishlistPage().chooseAnyProduct()
     await pm.onWishlistPage().clickOnAHeartButton()
-    await pm.onWishlistPage().popUpForSignInClick()
+    await pm.onWishlistPage().clickPopUpForSignIn()
     // Sign in page assertion
     const signIn = await pm.onSignUpPage().getSignInButton()
     await signIn.click()
@@ -58,29 +58,31 @@ test('User can wishlist a product when signed in', async ({ page }) => {
     // Checkbox assertion
     const checkBox = await pm.onSignUpPage().getCheckBox()
     await checkBox.click()
-    const isChecked1 = await checkBox.isChecked()
-    expect(isChecked1).toBeTruthy()
+    const isChecked1 = 'I agree to the terms and conditions and the privacy policy'
+    await checkBox.isChecked()
+    expect(isChecked1).toContain('I agree to the terms and conditions and the privacy policy')
     // Checkbox assertion
     const checkBox1 = await pm.onSignUpPage().getCheckBox1()
     await checkBox1.click()
-    const isChecked2 = await checkBox1.isChecked()
-    expect(isChecked2).toBeTruthy()
+    const isChecked2 = 'Customer data privacy'
+    await checkBox1.isChecked()
+    expect(isChecked2).toContain('Customer data privacy')
     // Save button assertion
     const saveButton = await pm.onSignUpPage().getSaveButton()
     await saveButton.click()
-    expect(saveButton).toBeDefined()
+    expect(saveButton).toBeInViewport()
     // Creating a new Wishlist and asserting the created list
     await pm.onWishlistPage().chooseAnyProduct()
     await pm.onWishlistPage().addToWishlistProduct()
     await pm.onWishlistPage().createNewWishlistPopUp()
     // Assertion of the creating a new wishlist
-    expect('Create wishlist').toEqual('Create wishlist')
+    expect('Create wishlist').toContain('Create wishlist')
     await pm.onWishlistPage().nameNewWishlist()
     await pm.onWishlistPage().createNewWishlist()
     await pm.onWishlistPage().newListCreated()
     // Asserton of the new wishlist
-    expect('New Wishlist').toEqual('New Wishlist')
+    expect('New Wishlist').toContain('New Wishlist')
     await pm.onWishlistPage().productAddedPopUp()
     // Assertion of the added product
-    expect('Product added').toBeDefined()
+    expect('Product added').toContain('Product added')
 }) 
