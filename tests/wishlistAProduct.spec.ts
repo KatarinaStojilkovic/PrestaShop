@@ -65,8 +65,8 @@ test('User can wishlist a product when signed in', async ({ page }) => {
     await pm.onWishlistPage().newListCreated()
     // Asserton of the new wishlist
     expect('New Wishlist').toContain('New Wishlist')
-     // Assertion of the added product
+    // Assertion of the added product
     const alertDialog = await pm.onWishlistPage().productAddedToast()
-    expect (alertDialog).toBeVisible
-    
+    expect(alertDialog).toBeVisible
+
 })

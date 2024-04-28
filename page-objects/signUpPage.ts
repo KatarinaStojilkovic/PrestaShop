@@ -26,7 +26,7 @@ export class signUpPage {
         this.page.frameLocator('#framelive').getByRole('link', { name: 'Sign in' }).first()
     }
     async getSignUpButton() {
-       return this.page.frameLocator('#framelive').getByRole('link', { name: 'No account? Create one here' }).first().click()
+        return this.page.frameLocator('#framelive').getByRole('link', { name: 'No account? Create one here' }).first().click()
     }
     async getRadioButton() {
         return this.page.frameLocator('#framelive').getByText('Mrs.').first()

@@ -31,6 +31,6 @@ export class wishListAProduct {
         return this.page.frameLocator('#framelive').getByText('New Wishlist').click()
     }
     async productAddedToast() {
-       return this.page.frameLocator('#framelive').getByText('Product added')
-}
+        return this.page.frameLocator('#framelive').getByText('Product added')
+    }
 }
