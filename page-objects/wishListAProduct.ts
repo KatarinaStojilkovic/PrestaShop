@@ -22,7 +22,7 @@ export class wishListAProduct {
         return this.page.frameLocator('#framelive').locator('#add-to-cart-or-refresh').getByRole('button', { name: 'favorite_border' }).click()
     }
     async nameNewWishlist() {
-        return this.page.frameLocator('#framelive').getByPlaceholder('Add name').fill('New Wishlist')
+        await this.page.frameLocator('#framelive').getByPlaceholder('Add name').fill('New Wishlist')
     }
     async createNewWishlist() {
         return this.page.frameLocator('#framelive').getByRole('button', { name: 'Create wishlist' }).click()
@@ -30,7 +30,7 @@ export class wishListAProduct {
     async newListCreated() {
         return this.page.frameLocator('#framelive').getByText('New Wishlist').click()
     }
-    async productAddedPopUp() {
-        return this.page.frameLocator('#framelive').getByText('Product added')
-    }
+    async productAddedToast() {
+       return this.page.frameLocator('#framelive').getByText('Product added')
+}
 }

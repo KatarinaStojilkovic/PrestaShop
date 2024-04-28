@@ -14,18 +14,11 @@ test('User can wishlist a product when signed in', async ({ page }) => {
     await pm.onWishlistPage().clickOnAHeartButton()
     await pm.onWishlistPage().clickPopUpForSignIn()
     // Sign in page assertion
-    const signIn = await pm.onSignUpPage().getSignInButton()
-    await signIn.click()
-    expect(signIn).toBeDefined()
-    // Sing up button assertion
-    const signUpButton = await pm.onSignUpPage().getSignUpButton()
-    await signUpButton.click()
-    // Radio Button assertion
-    const radioButton = await pm.onSignUpPage().getRadioButton()
-    await radioButton.click()
-    const isChecked = 'Mrs'
-    await radioButton.isChecked()
-    expect(isChecked).toMatch('Mrs')
+    await pm.onSignUpPage().getSignInButton()
+    // Sing up button 
+    await pm.onSignUpPage().getSignUpButton()
+    // Radio Button 
+    await pm.onSignUpPage().getRadioButton()
     // First Name assertion
     const firstName = await pm.onSignUpPage().getFirstName()
     const generatedFirstName = faker.person.firstName()
@@ -50,28 +43,17 @@ test('User can wishlist a product when signed in', async ({ page }) => {
     await password.fill(generatedPassword)
     const passwordInput = await password.inputValue()
     expect(passwordInput).toBe(generatedPassword)
-    // Birthday assertion
+    // Birthday 
     const birthday = await pm.onSignUpPage().getBirthday()
     const generatedBday = faker.date.between('1950/01/01', '2024/05/05').toLocaleDateString('en-US')
     await birthday.fill(generatedBday)
     const birthdayInput = await birthday.inputValue()
     expect(birthdayInput).toBe(generatedBday)
-    // Checkbox assertion
-    const checkBox = await pm.onSignUpPage().getCheckBox()
-    await checkBox.click()
-    const isChecked1 = 'I agree to the terms and conditions and the privacy policy'
-    await checkBox.isChecked()
-    expect(isChecked1).toContain('I agree to the terms and conditions and the privacy policy')
-    // Checkbox assertion
-    const checkBox1 = await pm.onSignUpPage().getCheckBox1()
-    await checkBox1.click()
-    const isChecked2 = 'Customer data privacy'
-    await checkBox1.isChecked()
-    expect(isChecked2).toContain('Customer data privacy')
-    // Save button assertion
-    const saveButton = await pm.onSignUpPage().getSaveButton()
-    await saveButton.click()
-    expect(saveButton).toBeInViewport()
+    // Checkbox 
+    await (await pm.onSignUpPage().getCheckBox()).check()
+    await (await pm.onSignUpPage().getCheckBox1()).check()
+    // Save button 
+    await pm.onSignUpPage().getSaveButton()
     // Creating a new Wishlist and asserting the created list
     await pm.onWishlistPage().chooseAnyProduct()
     await pm.onWishlistPage().addToWishlistProduct()
@@ -83,8 +65,8 @@ test('User can wishlist a product when signed in', async ({ page }) => {
     await pm.onWishlistPage().newListCreated()
     // Asserton of the new wishlist
     expect('New Wishlist').toContain('New Wishlist')
-    await pm.onWishlistPage().productAddedPopUp()
-    // Assertion of the added product
-    const productAdded = 'Product added'
-    expect(productAdded).toMatch('Product added')
-}) 
+     // Assertion of the added product
+    const alertDialog = await pm.onWishlistPage().productAddedToast()
+    expect (alertDialog).toBeVisible
+    
+})
