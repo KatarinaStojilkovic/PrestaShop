@@ -24,10 +24,10 @@ export class signUpPage {
     }
     // Creating the locators for the assertions that will be called on test page
     async getSignInButton() {
-       return this.page.frameLocator('#framelive').getByRole('link', { name: 'Sign in' }).first().click()
+        return this.page.frameLocator('#framelive').getByRole('link', { name: 'Sign in' }).first().click()
     }
     async getSignUpButton() {
-       return this.page.frameLocator('#framelive').getByRole('link', { name: 'No account? Create one here' }).first().click()
+        return this.page.frameLocator('#framelive').getByRole('link', { name: 'No account? Create one here' }).first().click()
     }
     async getRadioButton() {
         return this.page.frameLocator('#framelive').getByText('Mrs.').first()

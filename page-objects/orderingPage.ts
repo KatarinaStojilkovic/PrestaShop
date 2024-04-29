@@ -42,7 +42,7 @@ export class orderingPage {
         return this.page.frameLocator('#framelive').locator('#conditions-to-approve').getByText('I agree to the terms of service and will adhere to them unconditionally.').click()
     }
     async placeOrderButton() {
-        return this.page.frameLocator('#framelive').locator('#btn btn-primary center-block disabled').getByRole('button', {name: 'Place order'})
+        return this.page.frameLocator('#framelive').locator('#btn btn-primary center-block disabled').getByRole('button', { name: 'Place order' })
     }
 }
 
