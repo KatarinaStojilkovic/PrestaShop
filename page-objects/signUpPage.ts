@@ -24,7 +24,11 @@ export class signUpPage {
     }
     // Creating the locators for the assertions that will be called on test page
     async getSignInButton() {
+
+        this.page.frameLocator('#framelive').getByRole('link', { name: 'Sign in' }).first()
+
         return this.page.frameLocator('#framelive').getByRole('link', { name: 'Sign in' }).first().click()
+
     }
     async getSignUpButton() {
         return this.page.frameLocator('#framelive').getByRole('link', { name: 'No account? Create one here' }).first().click()
@@ -56,5 +60,9 @@ export class signUpPage {
     async getSaveButton() {
         return this.page.frameLocator('#framelive').getByRole('button', { name: 'Save' }).click()
     }
+
 }
+
+}
+
 
