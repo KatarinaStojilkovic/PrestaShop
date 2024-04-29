@@ -34,3 +34,4 @@ test('Clothes Page', async ({ page }) => {
     await expect(proceedToCheckoutButton).toBeHidden()
 }
 )
+

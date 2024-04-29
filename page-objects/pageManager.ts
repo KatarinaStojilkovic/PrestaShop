@@ -1,15 +1,15 @@
 import { Page } from '@playwright/test';
-import { clothesPage } from './clothesPage';
+import { contactUsPage } from './contactUsPage';
 
 export class PageManager {
     private readonly page: Page
-    private readonly clothesPage: clothesPage
+    private readonly contactUsPage: contactUsPage
 
     constructor(page: Page) {
         this.page = page
-        this.clothesPage = new clothesPage(this.page)
+        this.contactUsPage = new contactUsPage(this.page)
     }
-    onClothesPage() {
-        return this.clothesPage
+    onContactUsPage() {
+        return this.contactUsPage
     }
 }
