@@ -14,7 +14,7 @@ export class orderingPage {
     async clickOnProceedToCheckout() {
         return this.page.frameLocator('#framelive').getByRole('link', { name: 'Proceed to checkout' }).click()
     }
-    async blueBoxCheckout() {
+    async clickOnBlueBoxCheckout() {
         return this.page.frameLocator('#framelive').locator('#main div').filter({ hasText: 'Proceed to checkout' }).nth(3).click()
     }
     async inputAddress() {
@@ -27,18 +27,18 @@ export class orderingPage {
         return this.page.frameLocator('#framelive').getByLabel('State').click()
     }
     async chooseCountryFromDropDown() {
-        return this.page.frameLocator('#framelive').getByLabel('State').selectOption('Arizona')
+        return this.page.frameLocator('#framelive').getByLabel('State').selectOption('6')
     }
     async zipCodeInput() {
         return this.page.frameLocator('#framelive').getByLabel('Zip/Postal Code').fill("12345")
     }
-    async blueContinueButton() {
+    async clickOnBlueContinueButton() {
         return this.page.frameLocator('#framelive').getByRole('button', { name: 'Continue' }).click()
     }
-    async shippingMethodContinueButton() {
+    async clickOnShippingMethodContinueButton() {
         return this.page.frameLocator('#framelive').locator('#js-delivery').getByRole('button', { name: 'Continue' }).first().click()
     }
-    async paymentCheckbox() {
+    async checkThePaymentCheckbox() {
         return this.page.frameLocator('#framelive').locator('#conditions-to-approve').getByText('I agree to the terms of service and will adhere to them unconditionally.').click()
     }
     async placeOrderButton() {
