@@ -6,7 +6,7 @@ export class clothesPage {
         this.page = page
     }
     // Creating the locators for the pages and elements on the website
-    async onClothesPage() {
+    async clickOnClothesMenu() {
         await this.page.frameLocator('#framelive').getByRole('link', { name: 'Clothes' }).first().click()
     }
     async getClothesPage() {
