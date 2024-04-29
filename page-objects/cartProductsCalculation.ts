@@ -10,7 +10,7 @@ export class cartProductsCalculation {
     async proceedToCheckoutButton() {
         await this.page.frameLocator('#framelive').getByRole('link', { name: 'Proceed to checkout' }).first().click()
     }
-    async sweaterPrice() {
+    async sweaterPriceDiscsount() {
         return this.page.frameLocator('#framelive').getByText('€34.46')
     }
     async increaseTheProductNumber() {
@@ -19,6 +19,9 @@ export class cartProductsCalculation {
         }
     }
     async assertQuantity() {
-        this.page.frameLocator('#framelive').locator('.js-cart-line-product-quantity form-control').getByLabel('Hummingbird printed sweater')
+        return this.page.frameLocator('#framelive').getByLabel('Hummingbird printed sweater')
+    }
+    async priceMultipliedBy5(){
+        return this.page.frameLocator('#framelive').locator('#cart-subtotal-products').getByText('€')
     }
 }
