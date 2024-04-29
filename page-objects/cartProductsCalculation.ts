@@ -21,7 +21,7 @@ export class cartProductsCalculation {
     async assertQuantity() {
         return this.page.frameLocator('#framelive').getByLabel('Hummingbird printed sweater')
     }
-    async priceMultipliedBy5(){
+    async priceMultipliedBy5() {
         return this.page.frameLocator('#framelive').locator('#cart-subtotal-products').getByText('€')
     }
 }

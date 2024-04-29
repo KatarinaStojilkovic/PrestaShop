@@ -6,7 +6,6 @@ test.beforeEach(async ({ page }) => {
     await page.goto('https://demo.prestashop.com/#/en/front')
 })
 test('Total calculation of the products in the shopping cart', async ({ page }) => {
-
     // Creating a const in order to call up the locators easier and assert the user inputs
     const pm = new PageManager(page)
     await pm.onClothesPage().clickOnClothesMenu()
@@ -22,6 +21,6 @@ test('Total calculation of the products in the shopping cart', async ({ page }) 
     await expect(inputOfTheSweaters).toHaveValue('5')
     // Assertion of the multiplied price
     const priceMultipliedBy5 = await pm.onCartProductsPage().priceMultipliedBy5()
-    await expect (priceMultipliedBy5).toBeVisible()
+    await expect(priceMultipliedBy5).toBeVisible()
 })
 
