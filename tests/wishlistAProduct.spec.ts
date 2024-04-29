@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test'
 import { PageManager } from '../page-objects/pageManager'
-import { faker } from '@faker-js/faker';
 
 // The page has to open everytime before starting the test since nothing is saved when the page gets reloaded or it takes some time to load
 test.beforeEach(async ({ page }) => {
