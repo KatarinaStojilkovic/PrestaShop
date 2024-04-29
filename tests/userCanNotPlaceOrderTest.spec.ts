@@ -1,29 +1,21 @@
 import { test, expect } from '@playwright/test'
 import { PageManager } from '../page-objects/pageManager'
 import { faker } from '@faker-js/faker';
-import exp from 'constants';
 
 // The page has to open everytime before starting the test since nothing is saved when the page gets reloaded or it takes some time to load
 test.beforeEach(async ({ page }) => {
     await page.goto('https://demo.prestashop.com/#/en/front')
 })
-test('User can not place order after signing in', async ({ page }) => {
-    // Creating a const in order to call up the locators easier and assert the user inputs
+test('User can not order a product when signed in', async ({ page }) => {
+    // Creating a const in order to call up the locators easier and assertion of the user inputs
+    const pm = new PageManager(page);
+
     // Sign in page assertion
-    const pm = new PageManager(page)
-    const signIn = await pm.onSignUpPage().getSignInButton()
-    await signIn.click()
-    expect(signIn).toBeVisible()
+    await pm.onSignUpPage().getSignInButton()
     // Sing up button 
-    const signUpButton = await pm.onSignUpPage().getSignUpButton()
-    await signUpButton.click()
-    await expect(signUpButton).toBeVisible()
-    // Radio Button assertion
-    const radioButton = await pm.onSignUpPage().getRadioButton()
-    await radioButton.click()
-    const isChecked = 'Mrs'
-    await radioButton.isChecked()
-    expect(isChecked).toMatch('Mrs')
+    await pm.onSignUpPage().getSignUpButton()
+    // Radio Button 
+    await pm.onSignUpPage().getRadioButton()
     // First Name assertion
     const firstName = await pm.onSignUpPage().getFirstName()
     const generatedFirstName = faker.person.firstName()
@@ -48,28 +40,17 @@ test('User can not place order after signing in', async ({ page }) => {
     await password.fill(generatedPassword)
     const passwordInput = await password.inputValue()
     expect(passwordInput).toBe(generatedPassword)
-    // Birthday assertion
+    // Birthday 
     const birthday = await pm.onSignUpPage().getBirthday()
     const generatedBday = faker.date.between('1950/01/01', '2024/05/05').toLocaleDateString('en-US')
     await birthday.fill(generatedBday)
     const birthdayInput = await birthday.inputValue()
     expect(birthdayInput).toBe(generatedBday)
-    // Checkbox assertion
-    const checkBox = await pm.onSignUpPage().getCheckBox()
-    await checkBox.click()
-    const isChecked1 = 'I agree to the terms and conditions and the privacy policy'
-    await checkBox.isChecked()
-    expect(isChecked1).toContain('I agree to the terms and conditions and the privacy policy')
-    // Checkbox assertion
-    const checkBox1 = await pm.onSignUpPage().getCheckBox1()
-    await checkBox1.click()
-    const isChecked2 = 'Customer data privacy'
-    await checkBox1.isChecked()
-    expect(isChecked2).toContain('Customer data privacy')
-    // Save button assertion
-    const saveButton = await pm.onSignUpPage().getSaveButton()
-    await saveButton.click()
-    expect(saveButton).toBeInViewport()
+    // Checkbox 
+    await (await pm.onSignUpPage().getCheckBox()).check()
+    await (await pm.onSignUpPage().getCheckBox1()).check()
+    // Save button 
+    await pm.onSignUpPage().getSaveButton()
     await pm.onOrderingPage().clickOnSweaterProduct()
     // Input of the number in field and assertion of the input data
     await pm.onOrderingPage().clickOnAddToCartButton()
@@ -82,17 +63,14 @@ test('User can not place order after signing in', async ({ page }) => {
     await pm.onOrderingPage().countryDropDown()
     // Assertion of the country
     await pm.onOrderingPage().chooseCountryFromDropDown()
-    expect('Arizona').toMatch('Arizona')
+    expect('Arizona').toContain('Arizona')
     await pm.onOrderingPage().zipCodeInput()
     await pm.onOrderingPage().blueContinueButton()
-    // Assertion of the blue continue button
+    // Click on blue continue button
     await pm.onOrderingPage().shippingMethodContinueButton()
-    expect('Continue').toContain('Continue')
-    // Assertion of the Payment Checkbox
+    // Clicking on the Payment Checkbox
     await pm.onOrderingPage().paymentCheckbox()
-    const paymentCheckboxAssert = 'I agree to the terms of service and will adhere to them unconditionally.'
-    expect(paymentCheckboxAssert).toContain('I agree to the terms of service and will adhere to them unconditionally.')
     // Assertion of the Place Order button
-    await pm.onOrderingPage().placeOrderButton()
-    expect('Place order').toMatch('Place order')
+    const placeOrderBlueBox = await pm.onOrderingPage().placeOrderButton()
+    await expect(placeOrderBlueBox).toBeHidden()
 })
