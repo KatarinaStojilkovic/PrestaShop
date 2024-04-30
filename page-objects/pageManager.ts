@@ -7,6 +7,7 @@ export class PageManager {
     private readonly page: Page
     private readonly cartProductsCalculation: cartProductsCalculation
     private readonly clothesPage: clothesPage
+    private readonly contactUsPage: contactUsPage
 
     constructor(page: Page) {
         this.page = page
@@ -18,11 +19,6 @@ export class PageManager {
     }
     onClothesPage() {
         return this.clothesPage
-    private readonly contactUsPage: contactUsPage
-
-    constructor(page: Page) {
-        this.page = page
-        this.contactUsPage = new contactUsPage(this.page)
     }
     onContactUsPage() {
         return this.contactUsPage
