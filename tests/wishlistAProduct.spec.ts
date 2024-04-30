@@ -33,5 +33,4 @@ test('User can wishlist a product when signed in', async ({ page }) => {
     // Assertion of the added product
     const alertDialog = await pm.onWishlistPage().productAddedToast()
     expect(alertDialog).toBeVisible
-
 })

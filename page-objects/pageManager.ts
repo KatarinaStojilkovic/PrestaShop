@@ -7,7 +7,6 @@ import { clothesPage } from './clothesPage';
 
 export class PageManager {
     private readonly page: Page
-
     private readonly signUpPage: signUpPage
     private readonly wishListAProduct: wishListAProduct
     private readonly contactUsPage: contactUsPage
