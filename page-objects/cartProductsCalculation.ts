@@ -23,7 +23,7 @@ export class cartProductsCalculation {
         return this.page.frameLocator('#framelive').getByLabel('Hummingbird printed sweater')
     }
     async priceMultipliedBy5() {
-        return this.page.frameLocator('#framelive').getByRole('listitem').locator('span').filter({ hasText: '€172.32' }).innerText()
+        return this.page.frameLocator('#framelive').locator('#cart-subtotal-products').getByText('€').innerText()
     }
     //cena*5 = nova cena; asertacija!
 }
